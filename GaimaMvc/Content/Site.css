@@ -1,0 +1,180 @@
+﻿body {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    font-family: Arial; 
+}
+
+.navbar-inverse {
+    background-color: #051;
+    -moz-box-shadow: 3px 3px 5px -1px #030;
+    -webkit-box-shadow: 3px 3px 5px -1px #030;
+    box-shadow: 0px 1px 100px 0px #030;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #bfb;
+    }
+
+.navbar-inverse .navbar-brand {
+    color: #bfb;
+}
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#logo {
+    width: 110px; 
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+#search {
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+#tbxSearch {
+    width: 250px;
+}
+
+.row-gameList {
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+
+    .row-gameList > div {
+        padding: 10px;
+    }
+    /*.row-gameList > div:nth-child(2) {
+        border-right: solid 1px;
+        border-left: solid 1px;
+    }*/
+
+        .row-gameList div > a {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #000;
+        }
+
+        .row-gameList div > div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .row-gameList div > div > strong {
+            font-size: initial;
+        }
+
+#gameListScore {
+    font-size: 250%;
+}
+
+.gameInfo-footer {
+    display: flex;
+}
+
+#scoreChart {
+    float: right;
+    display: inline-block;
+}
+
+#advSearch label {
+    display: block;
+}
+
+div#parameterContainer {
+    padding: 5px;
+    margin: 10px 0;
+    display: inline-block;
+    height: 120px;
+    border: 1px solid rgba(0, 100, 20, 0.7);
+    border-radius: 7px;
+    -moz-box-shadow: 3px 3px 5px -1px #082;
+    -webkit-box-shadow: 3px 3px 5px -1px #082;
+    box-shadow: 3px 3px 5px -1px #082;
+}
+
+.parameter {
+    border: 1px solid rgba(0, 100, 20, 0.7);
+    margin: 0 5px 5px 0;
+    padding-right: 8px;
+    font-weight: bold;
+    font-family: Verdana;
+    -moz-box-shadow: inset -3px -3px 4px -2px #082;
+    -webkit-box-shadow: inset -3px -3px 4px -2px #082;
+    box-shadow: inset -3px -3px 4px -2px #082;
+}
+
+    .parameter span {
+        padding-left: 5px;
+        vertical-align: -1px;
+    }
+
+#sliderContainer {
+    display: inline-block;
+    padding: 0 10px 0 10px; 
+}
+
+    #sliderContainer > div.row-fluid > div.col-xs-9 {
+        padding-left: 0;
+    }
+
+    #sliderContainer > div > div > div > p {
+        min-height: 45px;
+        text-align: center;
+    }
+
+        #sliderContainer > div > div > div > p > input {
+            width: 8px;
+        }
+
+.ui-slider-vertical {
+    margin: 0 auto 10px auto !important;
+}
+
+.col-20 {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width:20%;
+}
+
+.info-box {
+    padding: 15px;
+    border: 1px solid #082;
+    border-radius: 25px;
+    text-align: center;
+}
+
+    .info-box > p {
+        margin: 0;
+    }
+
+

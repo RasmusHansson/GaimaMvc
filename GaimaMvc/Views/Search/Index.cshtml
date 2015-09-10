@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model List<GaimaMvc.Models.GameInfoView>
+
+<div id="search">
+    @{
+        using (Html.BeginForm("SimpleSearch", "Search"))
+        {
+            @Html.TextBox("tbxSearch")
+            <input id="btnSimpleSearch" class="" type="submit" value="Search" />
+        }
+        
+        @Html.ActionLink("Advanced search", "Advanced", "Search")
+    }
+</div>
+<div id="searchResults">
+    @if (Model != null)
+    {
+        Html.RenderPartial("_GameList", Model);
+    }
+</div>

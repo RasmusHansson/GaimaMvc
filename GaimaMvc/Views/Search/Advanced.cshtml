@@ -1,0 +1,101 @@
+﻿@model GaimaMvc.Models.AdvancedSearchView
+
+<h2>Advanced Search</h2>
+
+<div>
+    <div id="advSearch" class="col-xs-12">  
+        <div class="col-xs-12">
+            <h3>Categories</h3>
+            <p>Filter your search based on platform availability, genre, graphic style and/or theme.</p>
+            <div class="col-xs-12">
+                <div class="col-xs-3">
+                    @Html.LabelFor(x => x.SelectPlatform)
+                    @Html.DropDownListFor(x => x.SelectPlatformID, Model.SelectPlatform, "")
+                </div>
+                <div class="col-xs-3">
+                    @Html.LabelFor(x => x.SelectGenre)
+                    @Html.DropDownListFor(x => x.SelectGenreID, Model.SelectGenre, "")
+                </div>
+                <div class="col-xs-3">
+                    @Html.LabelFor(x => x.SelectGraphicStyle)
+                    @Html.DropDownListFor(x => x.SelectGraphicStyleID, Model.SelectGraphicStyle, "")
+                </div>
+                <div class="col-xs-3">
+                    @Html.LabelFor(x => x.SelectTheme)
+                    @Html.DropDownListFor(x => x.SelectThemeID, Model.SelectTheme, "")
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" id="parameterContainer">
+
+        </div>
+        <div class="container-fluid" id="sliderContainer">
+            <h3>Game Focus Ratings</h3>
+            <div class="row-fluid">
+                <div class="col-xs-9">
+                    <p>Narrow your search by choosing a rating that suits your preferences</p>
+                    <div class="col-20">
+                        <p>
+                            <label for="amount-strategy">Strategic Difficulty</label>
+                        </p>
+                        <div id="slider-strategy" class="ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"></div>
+                        <p>
+                            <input type="text" id="amount-strategy" readonly style="border:0; color:#082; font-weight:bold;">
+                        </p>
+                    </div>
+                    <div class="col-20">
+                        <p>
+                            <label for="amount-mechanics">Mechanical Difficulty</label>
+                        </p>
+                        <div id="slider-mechanics" class="ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"></div>
+                        <p>
+                            <input type="text" id="amount-mechanics" readonly style="border:0; color:#082; font-weight:bold;">
+                        </p>
+                    </div>
+                    <div class="col-20">
+                        <p>
+                            <label for="amount-ease">Ease of Access</label>
+                        </p>
+                        <div id="slider-ease" class="ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"></div>
+                        <p>
+                            <input type="text" id="amount-ease" readonly style="border:0; color:#082; font-weight:bold;">
+                        </p>
+                    </div>
+                    <div class="col-20">
+                        <p>
+                            <label for="amount-atmosphere">Atmosphere</label>
+                        </p>
+                        <div id="slider-atmosphere" class="ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"></div>
+                        <p>
+                            <input type="text" id="amount-atmosphere" readonly style="border:0; color:#082; font-weight:bold;">
+                        </p>
+                    </div>
+                    <div class="col-20">
+                        <p>
+                            <label for="amount-longevity">Replay Value</label>
+                        </p>
+                        <div id="slider-longevity" class="ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"></div>
+                        <p>
+                            <input type="text" id="amount-longevity" readonly style="border:0; color:#082; font-weight:bold;">
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-3 info-box">
+                    <p>
+                        A high rating doesn't necessarily mean a game is better.
+                        As an example, a high value in mechanical difficulty means the game requires a high amount of mechanical skill to play well.
+                        A low mechanical difficulty rating signifies a focus on other parts of gameplay.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <input id="btnAdvancedSearch" value="Advanced Search" type="submit" class="btn btn-success"/>
+    </div>
+    <div class="col-xs-12 resultContainer">
+        
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "GameInfo";
+}
+
+@model GaimaMvc.Models.GameInfoView
+
+
+<div class="panel">
+    <div class="col-xs-12 panel-body">
+        <div class="col-xs-12">
+            <img id="coverImage" src="@Model.Images.sCover" />
+            <h2>@Model.Title</h2> 
+        </div>
+        <div class="col-xs-7 text-left">
+            <h4>Description</h4>
+            <p>
+                @Model.Description
+            </p>
+        </div>
+        <div id="scoreChart" class="col-xs-5">
+            <img src="@Url.Action("ScoreChart/" + @Model.ID)" />
+        </div>  
+    </div>
+
+    <div class="gameInfo-footer panel-footer">
+        <div class="col-xs-3">
+            <h4>Available on these platforms:</h4>
+            @foreach (var platform in Model.Platforms)
+            {
+                <p>@Html.ActionLink(platform.sName, "PlatformSearch/" + platform.iPlatform)</p>
+            }
+        </div>
+        <div class="col-xs-3">
+            <h4>Genres</h4>
+            @foreach (var genre in Model.Genres)
+            {
+                <p>@Html.ActionLink(genre.sName, "GenreSearch/" + genre.iGenre)</p>
+            }
+        </div>
+        <div class="col-xs-3">
+            <h4>Graphic styles</h4>
+            @foreach (var graphicStyle in Model.GraphicStyles)
+            {
+                <p>@Html.ActionLink(graphicStyle.sName, "GraphicStyleSearch/" + graphicStyle.iGraphicStyle)</p>
+            }
+        </div>
+        <div class="col-xs-3">
+            <h4>Themes</h4>
+            @foreach (var theme in Model.Themes)
+            {
+                <p>@Html.ActionLink(theme.sName, "ThemeSearch/" + theme.iTheme)</p>
+            }
+        </div>
+    </div>
+</div>
+

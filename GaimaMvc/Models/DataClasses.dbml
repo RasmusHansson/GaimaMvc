@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbGaima" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IDEA-PC\SQL2014;Initial Catalog=dbGaima;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbGaimaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbGame" Member="tbGames">
+    <Type Name="tbGame">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="sDescription" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Association Name="tbGame_tbGameGenre" Member="tbGameGenres" ThisKey="Id" OtherKey="iGame" Type="tbGameGenre" />
+      <Association Name="tbGame_tbGameGraphicStyle" Member="tbGameGraphicStyles" ThisKey="Id" OtherKey="iGame" Type="tbGameGraphicStyle" />
+      <Association Name="tbGame_tbGamePlatform" Member="tbGamePlatforms" ThisKey="Id" OtherKey="iGame" Type="tbGamePlatform" />
+      <Association Name="tbGame_tbGameScore" Member="tbGameScores" ThisKey="Id" OtherKey="iGame" Type="tbGameScore" />
+      <Association Name="tbGame_tbGameTheme" Member="tbGameThemes" ThisKey="Id" OtherKey="iGame" Type="tbGameTheme" />
+      <Association Name="tbGame_tbImage" Member="tbImages" ThisKey="Id" OtherKey="iGame" Type="tbImage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbUser" Member="tbUsers">
+    <Type Name="tbUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sUserName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="sUserPassWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tbUser_tbGameScore" Member="tbGameScores" ThisKey="Id" OtherKey="iUser" Type="tbGameScore" />
+      <Association Name="tbUser_tbTemplate" Member="tbTemplates" ThisKey="Id" OtherKey="iUser" Type="tbTemplate" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameGenre" Member="tbGameGenres">
+    <Type Name="tbGameGenre">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iGenre" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGame_tbGameGenre" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+      <Association Name="tbGenre_tbGameGenre" Member="tbGenre" ThisKey="iGenre" OtherKey="Id" Type="tbGenre" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameGraphicStyle" Member="tbGameGraphicStyles">
+    <Type Name="tbGameGraphicStyle">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iGraphicStyle" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGame_tbGameGraphicStyle" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+      <Association Name="tbGraphicStyle_tbGameGraphicStyle" Member="tbGraphicStyle" ThisKey="iGraphicStyle" OtherKey="Id" Type="tbGraphicStyle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGamePlatform" Member="tbGamePlatforms">
+    <Type Name="tbGamePlatform">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iPlatform" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGame_tbGamePlatform" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+      <Association Name="tbPlatform_tbGamePlatform" Member="tbPlatform" ThisKey="iPlatform" OtherKey="Id" Type="tbPlatform" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameScore" Member="tbGameScores">
+    <Type Name="tbGameScore">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iGame" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iParameters" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbGame_tbGameScore" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+      <Association Name="tbUser_tbGameScore" Member="tbUser" ThisKey="iUser" OtherKey="Id" Type="tbUser" IsForeignKey="true" />
+      <Association Name="tbParameter_tbGameScore" Member="tbParameter" ThisKey="iParameters" OtherKey="Id" Type="tbParameter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTheme" Member="tbGameThemes">
+    <Type Name="tbGameTheme">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iTheme" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGame_tbGameTheme" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+      <Association Name="tbTheme_tbGameTheme" Member="tbTheme" ThisKey="iTheme" OtherKey="Id" Type="tbTheme" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGenre" Member="tbGenres">
+    <Type Name="tbGenre">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tbGenre_tbGameGenre" Member="tbGameGenres" ThisKey="Id" OtherKey="iGenre" Type="tbGameGenre" />
+      <Association Name="tbGenre_tbPreferenceGenre" Member="tbPreferenceGenres" ThisKey="Id" OtherKey="iGenre" Type="tbPreferenceGenre" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGraphicStyle" Member="tbGraphicStyles">
+    <Type Name="tbGraphicStyle">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tbGraphicStyle_tbGameGraphicStyle" Member="tbGameGraphicStyles" ThisKey="Id" OtherKey="iGraphicStyle" Type="tbGameGraphicStyle" />
+      <Association Name="tbGraphicStyle_tbPreferenceGraphicStyle" Member="tbPreferenceGraphicStyles" ThisKey="Id" OtherKey="iGraphicStyle" Type="tbPreferenceGraphicStyle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbParameters" Member="tbParameters">
+    <Type Name="tbParameter">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iStrategy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iMechanics" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iEase" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iAtmosphere" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iLongevity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbParameter_tbGameScore" Member="tbGameScores" ThisKey="Id" OtherKey="iParameters" Type="tbGameScore" />
+      <Association Name="tbParameter_tbPreference" Member="tbPreferences" ThisKey="Id" OtherKey="iParameters" Type="tbPreference" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPlatform" Member="tbPlatforms">
+    <Type Name="tbPlatform">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tbPlatform_tbGamePlatform" Member="tbGamePlatforms" ThisKey="Id" OtherKey="iPlatform" Type="tbGamePlatform" />
+      <Association Name="tbPlatform_tbPreferencePlatform" Member="tbPreferencePlatforms" ThisKey="Id" OtherKey="iPlatform" Type="tbPreferencePlatform" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPreference" Member="tbPreferences">
+    <Type Name="tbPreference">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iParameters" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbPreference_tbPreferenceGenre" Member="tbPreferenceGenres" ThisKey="Id" OtherKey="iPreference" Type="tbPreferenceGenre" />
+      <Association Name="tbPreference_tbPreferenceGraphicStyle" Member="tbPreferenceGraphicStyles" ThisKey="Id" OtherKey="iPreference" Type="tbPreferenceGraphicStyle" />
+      <Association Name="tbPreference_tbPreferencePlatform" Member="tbPreferencePlatforms" ThisKey="Id" OtherKey="iPreference" Type="tbPreferencePlatform" />
+      <Association Name="tbPreference_tbPreferenceTheme" Member="tbPreferenceThemes" ThisKey="Id" OtherKey="iPreference" Type="tbPreferenceTheme" />
+      <Association Name="tbPreference_tbTemplate" Member="tbTemplates" ThisKey="Id" OtherKey="iPreference" Type="tbTemplate" />
+      <Association Name="tbParameter_tbPreference" Member="tbParameter" ThisKey="iParameters" OtherKey="Id" Type="tbParameter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPreferenceGenre" Member="tbPreferenceGenres">
+    <Type Name="tbPreferenceGenre">
+      <Column Name="iPreference" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iGenre" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGenre_tbPreferenceGenre" Member="tbGenre" ThisKey="iGenre" OtherKey="Id" Type="tbGenre" IsForeignKey="true" />
+      <Association Name="tbPreference_tbPreferenceGenre" Member="tbPreference" ThisKey="iPreference" OtherKey="Id" Type="tbPreference" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPreferenceGraphicStyle" Member="tbPreferenceGraphicStyles">
+    <Type Name="tbPreferenceGraphicStyle">
+      <Column Name="iPreference" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iGraphicStyle" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbGraphicStyle_tbPreferenceGraphicStyle" Member="tbGraphicStyle" ThisKey="iGraphicStyle" OtherKey="Id" Type="tbGraphicStyle" IsForeignKey="true" />
+      <Association Name="tbPreference_tbPreferenceGraphicStyle" Member="tbPreference" ThisKey="iPreference" OtherKey="Id" Type="tbPreference" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPreferencePlatform" Member="tbPreferencePlatforms">
+    <Type Name="tbPreferencePlatform">
+      <Column Name="iPreference" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iPlatform" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbPlatform_tbPreferencePlatform" Member="tbPlatform" ThisKey="iPlatform" OtherKey="Id" Type="tbPlatform" IsForeignKey="true" />
+      <Association Name="tbPreference_tbPreferencePlatform" Member="tbPreference" ThisKey="iPreference" OtherKey="Id" Type="tbPreference" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPreferenceTheme" Member="tbPreferenceThemes">
+    <Type Name="tbPreferenceTheme">
+      <Column Name="iPreference" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iTheme" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tbPreference_tbPreferenceTheme" Member="tbPreference" ThisKey="iPreference" OtherKey="Id" Type="tbPreference" IsForeignKey="true" />
+      <Association Name="tbTheme_tbPreferenceTheme" Member="tbTheme" ThisKey="iTheme" OtherKey="Id" Type="tbTheme" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTemplate" Member="tbTemplates">
+    <Type Name="tbTemplate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="iPreference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbPreference_tbTemplate" Member="tbPreference" ThisKey="iPreference" OtherKey="Id" Type="tbPreference" IsForeignKey="true" />
+      <Association Name="tbUser_tbTemplate" Member="tbUser" ThisKey="iUser" OtherKey="Id" Type="tbUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTheme" Member="tbThemes">
+    <Type Name="tbTheme">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tbTheme_tbGameTheme" Member="tbGameThemes" ThisKey="Id" OtherKey="iTheme" Type="tbGameTheme" />
+      <Association Name="tbTheme_tbPreferenceTheme" Member="tbPreferenceThemes" ThisKey="Id" OtherKey="iTheme" Type="tbPreferenceTheme" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwGenre" Member="vwGenres">
+    <Type Name="vwGenre">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iGenre" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwTheme" Member="vwThemes">
+    <Type Name="vwTheme">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iTheme" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwGraphicStyle" Member="vwGraphicStyles">
+    <Type Name="vwGraphicStyle">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iGraphicStyle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwPlatform" Member="vwPlatforms">
+    <Type Name="vwPlatform">
+      <Column Name="iGame" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iPlatform" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwScore" Member="vwScores">
+    <Type Name="vwScore">
+      <Column Name="iGame" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iAtmosphere" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iEase" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iLongevity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iMechanics" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iStrategy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbImage" Member="tbImages">
+    <Type Name="tbImage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sThumbnail" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="sCover" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="iGame" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbGame_tbImage" Member="tbGame" ThisKey="iGame" OtherKey="Id" Type="tbGame" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
